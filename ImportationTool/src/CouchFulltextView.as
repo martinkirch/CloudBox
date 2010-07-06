@@ -18,7 +18,7 @@ package
 		override protected function get OFFSET_FIELD_NAME():String { return 'skip'; }
 		
 		/**
-		 * params (optionels) : 
+		 * params  : 
 		 * callback (JSONP callback wrapper)
 		 * debug (true disables response caching)
 		 * force_json =true forces all response to "application/json" regardless of the Accept header

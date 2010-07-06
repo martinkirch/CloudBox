@@ -14,11 +14,22 @@
 	private var fileRef:FileReference;
 	
 	private function appComplete():void
-	{
-		couch = new Couch('cloudbox');
-		
+	{		
 		fileRef = new FileReference();
 		fileRef.addEventListener(Event.SELECT, fileSelected);
+	}
+	
+	private function connect(e:Event=null):void
+	{
+		couch = new Couch(db.text, host.text, new Number(port.text));
+		couch.addEventListener(Couch.BOOTSTRAPED, connected);
+	}
+	
+	private function connected(e:Event):void
+	{
+		host.enabled = db.enabled = port.enabled = connectButton.enabled = false;
+		uploadButton.enabled = true;
+		infoLabel.text = "Connected";
 	}
 	
 	private function fileSelected(e:Event):void
@@ -56,9 +67,19 @@
 	
 	]]></mx:Script>
 	
-	<mx:VBox>
+	<mx:VBox horizontalAlign="center">
 		<mx:Label id='infoLabel' />
 		
-		<mx:Button id='uploadButton' label='Upload' click='fileRef.browse()'/>
+		<mx:HBox horizontalGap="2">
+			<mx:Label text='Conect to : http://'/>
+			<mx:TextInput id='host' text='localhost'/>
+			<mx:Label text=':'/>
+			<mx:TextInput id='port' text='5984' width="40"/>
+			<mx:Label text='/'/>
+			<mx:TextInput id='db' text='cloudbox'/>
+			<mx:Button id='connectButton' label='Connect' click='connect()'/>
+		</mx:HBox>
+		
+		<mx:Button id='uploadButton' label='Browse files to upload...' click='fileRef.browse()' enabled="false"/>
 	</mx:VBox>
 </mx:WindowedApplication>

@@ -31,15 +31,15 @@ package
 		protected function get OFFSET_FIELD_NAME():String { return 'offset'; }
 		
 		/**
-		 * params (optionels) : 
-		 * key=valeurdeclé
-		 * startkey=valeurdeclé
-		 * startkey_docid=docid
-		 * endkey=valeurdeclé
-		 * limit=nombre de lignes maximum à retourner
-		 * update=false
-		 * descending=true
-		 * skip=lignes à passer
+		 * optional params : 
+		 * key
+		 * startkey
+		 * startkey_docid
+		 * endkey
+		 * limit
+		 * update
+		 * descending
+		 * skip
 		*/
 		public function get(params:Object = null):void
 		{

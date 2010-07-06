@@ -11,17 +11,13 @@ package
 	
 	public dynamic class CouchDocument extends Proxy
 	{
-		// Don't forget to add properties names in {has,set,get,delete}Property
-		
 		public var _id:String;
 		public var _rev:String;
-		public var _pendingAttachments:Array; // actually read-only
-		public var _data:Object; // actually read-only
-		// TODO: est-ce qu'il y a un flag pour le read-only?
-		// peut-on même faire read-only-from-package ?
+		public var _pendingAttachments:Array; // sould be read-only
+		public var _data:Object; // should be read-only
 		
 		private var _couchDB:Couch;
-		private var _dispatcher:EventDispatcher; // a kind of call-depencies-stack!
+		private var _dispatcher:EventDispatcher;
 		private var _iterator:Array; // see nextNameIndex, nextName...
 		
 		public static const ID_RECEIVED:String = "CouchDocument.ID_RECEIVED";
@@ -52,6 +48,9 @@ package
 		
 		////////////////////////////////////////////////////// SMOOTH PUBLIC API
 		
+		/**
+		 * @param the file to be attached
+		 */
 		public function attach(f:FileReference):void
 		{
 			_pendingAttachments = _pendingAttachments ? _pendingAttachments : new Array();
@@ -79,20 +78,6 @@ package
 			else
 			{
 				_couchDB.put(this, _id, _rev, callback);
-			}
-		}
-		
-		// TODO : virer ça pour que les gens appellent direct Couch::get ?
-		public function get(callback:Function):void
-		{
-			if(_id==null)
-			{
-				// TODO : dispatchEvent(CouchEvent.NOT_FOUND)
-				trace("CouchDocument::get() ERROR _id is still null! Aborting.");
-			}
-			else
-			{
-				_couchDB.get(this, callback);
 			}
 		}
 		

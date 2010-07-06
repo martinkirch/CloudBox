@@ -15,7 +15,6 @@ package
 		private var _couchURL:String;
 		
 		private var _bootstrapped:Boolean;
-		private var _dispatcher:EventDispatcher; // a kind of call-depencies-stack!
 		public static const BOOTSTRAPED:String = "Couch.BOOTSTRAPED";
 		
 		/*** setup ***/
@@ -28,7 +27,6 @@ package
 			_host = host;
 			_port = port;
 			_couchURL = 'http://'+_host+':'+_port+'/';
-			_dispatcher = new EventDispatcher();
 			
 			bootstrap();
 		}
@@ -54,7 +52,7 @@ package
 				
 				trace("Couch::bootstrapComplete - Time to relax.");
 				
-				_dispatcher.dispatchEvent(new Event(BOOTSTRAPED));
+				dispatchEvent(new Event(BOOTSTRAPED));
 			}
 			else
 			{
@@ -70,18 +68,20 @@ package
 				dispatchEvent(e.clone());
 		}
 		
+		/**
+		 * @return DB's uri
+		 */
 		public function getDBURL():String
 		{
 			return _couchURL + _db + '/';
 		}
 		
-		/*** direct actions ***/
 		
 		public function uuids(callback:Function = null):void
 		{
 			if(!bootstrap())
 			{
-				_dispatcher.addEventListener(BOOTSTRAPED, function t(e:Event):void{ uuids(callback); _dispatcher.removeEventListener(BOOTSTRAPED,t); });
+				addEventListener(BOOTSTRAPED, function t(e:Event):void{ uuids(callback); removeEventListener(BOOTSTRAPED,t); });
 			}
 			else
 			{
@@ -96,7 +96,7 @@ package
 		{
 			if(!bootstrap())
 			{
-				_dispatcher.addEventListener(BOOTSTRAPED, function t(e:Event):void{ put(doc, id, rev, callback); _dispatcher.removeEventListener(BOOTSTRAPED,t); });
+				addEventListener(BOOTSTRAPED, function t(e:Event):void{ put(doc, id, rev, callback); removeEventListener(BOOTSTRAPED,t); });
 			}
 			else
 			{
@@ -109,11 +109,14 @@ package
 			}
 		}
 		
+		/**
+		 * You may call mycouch.get(new CouchDocument(mycouch,id,[rev]))
+		 */
 		public function get(doc:CouchDocument, callback:Function = null):void
 		{
 			if(!bootstrap())
 			{
-				_dispatcher.addEventListener(BOOTSTRAPED, function t(e:Event):void{ get(doc, callback); _dispatcher.removeEventListener(BOOTSTRAPED,t); });
+				addEventListener(BOOTSTRAPED, function t(e:Event):void{ get(doc, callback); removeEventListener(BOOTSTRAPED,t); });
 			}
 			else
 			{
@@ -133,7 +136,7 @@ package
 		{
 			if(!bootstrap())
 			{
-				_dispatcher.addEventListener(BOOTSTRAPED, function t(e:Event):void{ allDocs(callback, limit, offset, descending); _dispatcher.removeEventListener(BOOTSTRAPED,t); });
+				addEventListener(BOOTSTRAPED, function t(e:Event):void{ allDocs(callback, limit, offset, descending); removeEventListener(BOOTSTRAPED,t); });
 			}
 			else
 			{
