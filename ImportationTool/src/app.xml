@@ -1,0 +1,14 @@
+<application xmlns="http://ns.adobe.com/air/application/1.5">
+	<id>ImportationTool</id>
+	<version>0.1</version>
+	<filename>ImportationTool</filename>
+	<description>Cloudbox's MP3 importation tool</description>
+	<initialWindow>
+		<content>bin/ImportationTool.swf</content>
+		<visible>true</visible>
+		<systemChrome>none</systemChrome>
+		<transparent>true</transparent>
+		<width>600</width>
+		<height>100</height>
+	</initialWindow>
+</application>

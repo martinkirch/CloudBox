@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cloudbox</title>
+		<link rel="stylesheet" href="style/main.css" type="text/css"/>
+		<link rel="stylesheet" href="style/player.css" type="text/css"/>
+		<link rel="stylesheet" href="style/list.css" type="text/css"/>
+	</head>
+<body>
+	<div id="header" style="display:none">
+		<div id="playerContainer">
+			<a id="prevButton" href="">&lt;&lt;</a>
+			<audio controls="controls" id="player">You'd better get an HTML5-compliant browser!</audio>
+			<a id="nextButton" href="">&gt;&gt;</a>
+		</div>
+
+		<h1>Cloudbox</h1>
+		
+		<input type='text' id='searchInput' value='Search...'/>
+
+		<div class="spacer"></div>
+	</div>
+
+	<table class='list' id="listContainer">
+		<tr>
+			<th class='artist'>Artist</th>
+			<th class='title'>Title</th>
+		</tr>
+
+	</table>
+</body>
+
+	<script src="/_utils/script/jquery.js"></script>
+	<script src="/_utils/script/jquery.couch.js"></script>
+	<script type="text/javascript">
+		var baseURL = window.location.href.substring(0, window.location.href.indexOf('_design'));
+		var designURL = window.location.href.substring(0, window.location.href.indexOf('/', baseURL.length+8) + 1);
+		var _designName = designURL.substring(baseURL.length+8); // with an ending slash, actually
+		var ftiURL = baseURL+'_fti/'+_designName;
+		
+		function require(libraryName)
+		{
+	    document.write('<script type="text/javascript" src="'+designURL+libraryName+'.js"><\/script>'); // roots!
+	  };
+		
+		require('template');
+		require('player');
+		require('app');
+	</script>
+</html>

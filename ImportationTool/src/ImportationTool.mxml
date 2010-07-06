@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:ui="ui.*" layout="absolute" title="ImportationTool" applicationComplete="appComplete();">
+	<mx:Style source="ImportationTool.css"/>
+		
+	<mx:Script><![CDATA[
+	
+	import Couch;
+	import CouchDocument;
+	import com.metaphile.id3.ID3Reader;
+	import com.metaphile.id3.ID3Data;
+	
+	private var couch:Couch;
+	private var doc:CouchDocument;
+	private var fileRef:FileReference;
+	
+	private function appComplete():void
+	{
+		couch = new Couch('cloudbox');
+		
+		fileRef = new FileReference();
+		fileRef.addEventListener(Event.SELECT, fileSelected);
+	}
+	
+	private function fileSelected(e:Event):void
+	{
+	 	infoLabel.text = "Selected " + fileRef.name + " (" + fileRef.size + ")";
+		fileRef.addEventListener(Event.COMPLETE, fileLoaded);
+		fileRef.load();
+	}
+	
+	private function fileLoaded(e:Event):void
+	{
+		infoLabel.text = "Loaded";
+		var id3Reader:ID3Reader = new ID3Reader();
+		id3Reader.onMetaData = metaDataLoaded;
+		id3Reader.autoLimit = fileRef.data.bytesAvailable;
+		id3Reader.read(fileRef.data);
+	}
+	
+	private function metaDataLoaded(d:ID3Data):void
+	{
+		infoLabel.text = "Metadata Loaded";
+		doc = new CouchDocument(couch);
+		doc.filename = fileRef.name;
+		doc.artist = d.author;
+		doc.title = d.title;
+		doc.attach(fileRef);
+		doc.type = "song";
+		doc.save(fileSent);
+	}
+	
+	private function fileSent(e:CouchEvent):void
+	{
+		infoLabel.text = "Sent "+doc.filename;
+	}
+	
+	]]></mx:Script>
+	
+	<mx:VBox>
+		<mx:Label id='infoLabel' />
+		
+		<mx:Button id='uploadButton' label='Upload' click='fileRef.browse()'/>
+	</mx:VBox>
+</mx:WindowedApplication>

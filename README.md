@@ -7,7 +7,7 @@ Still in early dev.
 ## Requirements
 
 * CouchDB >=0.11 with couchdb-lucene (mapped as http://myhost.com/mydb/_fti)
-* Couchapp >=0.4 (for app installation)
+* Couchapp >=0.6.2 (for app installation)
 * Adobe AIR runtime (for music importation)
 
 Normally any HTML5-compliant browser can use the application. Tested on 

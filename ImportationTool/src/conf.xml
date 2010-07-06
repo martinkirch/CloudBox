@@ -1,0 +1,19 @@
+<flex-config>
+
+	<!--Compiler options -->
+	<compiler>
+		<source-path append="true">
+			<path-element>.</path-element>
+		</source-path>
+		<library-path append="true">
+		</library-path>
+		<include-libraries append="true">
+		</include-libraries>
+		<debug>true</debug>
+	</compiler>
+
+
+	<!-- Enables SWFs to access the network. -->
+	<use-network>true</use-network>
+	
+</flex-config>
