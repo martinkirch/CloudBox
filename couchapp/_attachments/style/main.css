@@ -12,6 +12,7 @@ body
 	font-size: 14px;
 	line-height: 1.5em;
 	color: #0d0d0d;
+	background: #fff url('backgroundLogo.png') no-repeat fixed right bottom;
 	background-color: #fff;
 }
 
@@ -55,18 +56,34 @@ h6
 
 input, textarea, button {
 	font-family: Helvetica, Arial, sans-serif;
-	padding: .25em .5em;
+	padding: .5em;
+	margin: .5em;
 	border: 1px solid #e5e5e5;
-	color: #454545;
-	font-size: 1em;
-	line-height: 1.25em;
-	
+	color: #555555;
+	font-size: 1.25em;
 }
 
-input, textarea {
+input, textarea, button {
 	-moz-box-shadow: inset 0 0 3px rgba(0,0,0,.1);
 	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.1);
 	box-shadow: inset 0 0 3px rgba(0,0,0,.1);
+}
+
+a
+{
+	font-weight:bold;
+	text-decoration:none;
+	color:#111;
+}
+
+a:hover
+{
+	text-decoration:underline;
+}
+
+table
+{
+	border-collapse:collapse;
 }
 
 /******* Element-specific stuff ********/
@@ -82,53 +99,7 @@ input, textarea {
 	padding:0.5em;
 }
 
-#searchInput
-{
-	position:absolute;
-	width:30%;
-	top:2em;
-	left:30%;
-}
-
 #header
 {
-	-moz-box-shadow: 5px 5px 12px rgba(0,0,0,.15);
-	-webkit-box-shadow: 5px 5px 12px rgba(0,0,0,0.15);
-	box-shadow: 5px 5px 12px rgba(0,0,0,.15);
 	background:#ddf;
-}
-
-
-
-#account {
-  float:right;
-}
-
-#profile {
-  border:4px solid #edd;
-  background:#fee;
-  padding:8px;
-  margin-bottom:8px;
-}
-
-div.avatar {
-  padding:2px;
-  padding-bottom:0;
-  margin-right:4px;
-  float:left;
-  font-size:0.78em;
-  width : 60px;
-  height : 60px;
-  text-align: center;
-}
-
-div.avatar .name {
-  padding-top:2px;
-}
-
-div.avatar img {
-  margin:0 auto;
-  padding:0;
-  width : 40px;
-  height : 40px;
 }

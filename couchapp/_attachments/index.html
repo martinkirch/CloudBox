@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
- <head>
-   <title>Cloudbox</title>
-   <link rel="stylesheet" href="style/main.css" type="text/css">
-	<link rel="stylesheet" href="style/player.css" type="text/css"/>
-	<link rel="stylesheet" href="style/list.css" type="text/css"/>
- </head>
+	<head>
+		<title>Cloudbox</title>
+		<link rel="stylesheet" href="style/main.css" type="text/css">
+		<link rel="stylesheet" href="style/player.css" type="text/css"/>
+		<link rel="stylesheet" href="style/list.css" type="text/css"/>
+		<link rel="stylesheet" href="style/searchbox.css" type="text/css"/>
+		<link rel="stylesheet" href="style/account.css" type="text/css"/>
+	</head>
 <body>
 	
 	<div id="header">
-		<div id="playerContainer">
-			<a id="prevButton" href="">&lt;&lt;</a>
-			<audio controls="controls" id="player">You'd better get an HTML5-compliant browser!</audio>
-			<a id="nextButton" href="">&gt;&gt;</a>
-		</div>
+		<div id="playerContainer"></div>
 
 		<h1>Cloudbox</h1>
 
-		<input type='text' id='searchInput' value='Search...'/>
+		<div id="searchBox"></div>
 
 		<div class="spacer"></div>
 	</div>
@@ -32,8 +30,15 @@
 <script type="text/javascript" charset="utf-8">
 	$.couch.app(function(app) {
 		$("#account").evently("account", app);
+		
+		$("#playerContainer").evently("player", app);
+		$.evently.connect("#account","#playerContainer",["loggedIn", "loggedOut"]);
+		
 		$("#list").evently("list", app);
-		$.evently.connect("#account","#list",["loggedIn"]);
+		$.evently.connect("#account","#list",["loggedIn", "loggedOut"]);
+		
+		$("#searchBox").evently("searchBox", app);
+		$.evently.connect("#account","#searchBox",["loggedIn", "loggedOut"]);
 	});
 </script>
 </html>

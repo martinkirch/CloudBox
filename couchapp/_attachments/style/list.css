@@ -1,13 +1,13 @@
 /** song list **/
 
-#list
+#list table
 {
 	clear: both;
-	width: 90%;
+	width: 96%;
 	border-collapse: collapse;
 	border-spacing: 0;
 	border: 1px solid #eee;
-	margin: 10px;
+	margin: 0.5em 2%;
 	-moz-box-shadow: 5px 5px 12px rgba(0,0,0,.15);
 	-webkit-box-shadow: 5px 5px 12px rgba(0,0,0,0.15);
 	box-shadow: 5px 5px 12px rgba(0,0,0,.15);
@@ -25,13 +25,17 @@
 	font-weight:bold;
 }
 
-tr.song:hover
-{
-	background:#ddd;
+#list tr.l0 {
+	background: #eee;
 }
 
-tr.song:nth-child(even) {
-	background: #eee !important;
+#list tr.l1 {
+	background: #fff;
+}
+
+#list tr.song:hover
+{
+	background:#ddd;
 }
 
 #list .artist, #list .title
