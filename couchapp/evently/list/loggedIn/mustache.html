@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<th class='artist'>Artist</th>
+		<th class='title'>Title</th>
+	</tr>
+{{#songs}}
+	<tr class="song" id="song_{{_id}}">
+		<td class='artist'>{{artist}}</td>
+		<td class='title'>{{title}}</td>
+	</tr>
+{{/songs}}
+</table>

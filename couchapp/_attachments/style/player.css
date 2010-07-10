@@ -1,0 +1,20 @@
+#playerContainer
+{
+	float:right;
+}
+
+#playerContainer a
+{
+	text-decoration:none;
+	color:white;
+	font-weight:bold;
+	padding:0.2em;
+	background:#ddd;
+/*	vertical-align:top;*/
+}
+
+#playerContainer a:hover
+{
+	background:white;
+	color:black;
+}

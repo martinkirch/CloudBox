@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My New CouchApp</title>
-    <link rel="stylesheet" href="style/main.css" type="text/css">
-  </head>
-  <body>
-    <div id="account"></div>
+ <head>
+   <title>Cloudbox</title>
+   <link rel="stylesheet" href="style/main.css" type="text/css">
+	<link rel="stylesheet" href="style/player.css" type="text/css"/>
+	<link rel="stylesheet" href="style/list.css" type="text/css"/>
+ </head>
+<body>
+	
+	<div id="header">
+		<div id="playerContainer">
+			<a id="prevButton" href="">&lt;&lt;</a>
+			<audio controls="controls" id="player">You'd better get an HTML5-compliant browser!</audio>
+			<a id="nextButton" href="">&gt;&gt;</a>
+		</div>
 
-    <h1>Generated CouchApp</h1>
+		<h1>Cloudbox</h1>
 
-    <div id="profile"></div>
-    <div id="items"></div>
+		<input type='text' id='searchInput' value='Search...'/>
 
-    <div id="sidebar">
-      <p>Edit welcome message.</p>
-      <p>Ideas: You could easily turn this into a photo sharing app, or a grocery list, or a chat room.</p>
-    </div>
-  </body>
-  <script src="vendor/couchapp/loader.js"></script>
-  <script type="text/javascript" charset="utf-8">
-    $.couch.app(function(app) {
-      $("#account").evently("account", app);
-      $("#profile").evently("profile", app);
-      $.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
-      $("#items").evently("items", app);
-    });
-  </script>
+		<div class="spacer"></div>
+	</div>
+	
+	<div id="account"></div>
+  
+	<div id="list"></div>
+
+</body>
+
+<script src="vendor/couchapp/loader.js"></script>
+<script type="text/javascript" charset="utf-8">
+	$.couch.app(function(app) {
+		$("#account").evently("account", app);
+		$("#list").evently("list", app);
+		$.evently.connect("#account","#list",["loggedIn"]);
+	});
+</script>
 </html>
