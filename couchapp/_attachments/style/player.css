@@ -1,9 +1,9 @@
-#playerContainer
+#player
 {
 	float:right;
 }
 
-#playerContainer a
+#player a
 {
 	text-decoration:none;
 	color:white;
@@ -13,7 +13,7 @@
 /*	vertical-align:top;*/
 }
 
-#playerContainer a:hover
+#player a:hover
 {
 	background:white;
 	color:black;

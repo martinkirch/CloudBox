@@ -11,7 +11,7 @@
 <body>
 	
 	<div id="header">
-		<div id="playerContainer"></div>
+		<div id="player"></div>
 
 		<h1>Cloudbox</h1>
 
@@ -38,8 +38,8 @@
 		
 		$("#account").evently(customAccount);
 		
-		$("#playerContainer").evently("player", app);
-		$.evently.connect("#account","#playerContainer",["loggedIn", "loggedOut"]);
+		$("#player").evently("player", app);
+		$.evently.connect("#account","#player",["loggedIn", "loggedOut"]);
 		
 		$("#list").evently("list", app);
 		$.evently.connect("#account","#list",["loggedIn", "loggedOut"]);

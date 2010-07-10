@@ -1,4 +1,4 @@
 function(e)
 {
-	alert('clicked '+$(this).data('doc').url);
+	$('#player').trigger('play', $(this).data('doc'));
 }
