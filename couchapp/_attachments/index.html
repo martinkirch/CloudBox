@@ -32,7 +32,8 @@
 		var customAccount = $.extend(true, {}, app.ddoc.vendor.couchapp.evently.account, {
 			loggedIn : {
 				mustache : "<span>Welcome {{name}}! <a id='logoutLink' href='#logout'>Logout</a></span>"
-			}
+			},
+			loggedOut : app.ddoc.vendor.couchapp.evently.account.loginForm
 		});
 		
 		$("#account").evently(customAccount);
