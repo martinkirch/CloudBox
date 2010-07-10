@@ -29,7 +29,13 @@
 <script src="vendor/couchapp/loader.js"></script>
 <script type="text/javascript" charset="utf-8">
 	$.couch.app(function(app) {
-		$("#account").evently("account", app);
+		var customAccount = $.extend(true, {}, app.ddoc.vendor.couchapp.evently.account, {
+			loggedIn : {
+				mustache : "<span>Welcome {{name}}! <a id='logoutLink' href='#logout'>Logout</a></span>"
+			}
+		});
+		
+		$("#account").evently(customAccount);
 		
 		$("#playerContainer").evently("player", app);
 		$.evently.connect("#account","#playerContainer",["loggedIn", "loggedOut"]);
