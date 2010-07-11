@@ -12,8 +12,9 @@ function(e,data)
 				if(name.substring(name.length - 3) == 'mp3')
 				{
 					doc.url = prefix + encodeURIComponent(doc._id) + '/' + encodeURIComponent(name);
+					break;
 				}
-		alert(doc.url);
+		
 		$('#song_'+doc._id).data('doc', doc);
 	};
 }
