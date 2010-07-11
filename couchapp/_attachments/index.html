@@ -44,6 +44,9 @@
 		$("#list").evently("list", app);
 		$.evently.connect("#account","#list",["loggedIn", "loggedOut"]);
 		
+		$.evently.connect("#list", "#player", ["play"]);
+		$.evently.connect("#player", "#list", ["next","previous"]);
+		
 		$("#searchBox").evently("searchBox", app);
 		$.evently.connect("#account","#searchBox",["loggedIn", "loggedOut"]);
 	});
