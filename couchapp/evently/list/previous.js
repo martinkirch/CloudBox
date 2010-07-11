@@ -1,12 +1,10 @@
 function(e)
 {
-	var widget = $(this);
-	
-	var currentSong = widget.data('currentSong');
+	var currentSong = $('.nowPlaying');
 	if(!currentSong) return;
 	
-	var previousElement = $('#song_'+currentSong._id).prev('.song');
+	var previousElement = currentSong.prev('.song');
 	if(previousElement.length == 0) return;
 	
-	widget.trigger('play', previousElement.data('doc'));
+	$(this).trigger('play', previousElement.data('doc'));
 }
