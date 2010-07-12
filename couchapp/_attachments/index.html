@@ -23,6 +23,43 @@
 	<div id="account"></div>
   
 	<div id="list"></div>
+	
+	<div id="aboutLinkContainer">
+		<a href="" id="aboutLink">About</a>
+	</div>
+	
+	<div id="about" style="display:none">
+		<a href="" id="aboutCloseLink">Close</a>
+		
+		<h1>This is Cloubox 0</h1>
+		
+		<p>
+			Copyright &copy; 2010 <a href='mailto:martin.kirch@gmail.com'>Martin
+			Kirchgessner</a>
+		</p>
+		
+		<p>
+			Cloudbox is your cloudy jukebox. It is released under the 
+			<a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> and powered by 
+			<a href="http://couchdb.apache.org/" target="_blank">CouchDB</a>,
+			<a href="http://github.com/couchapp/couchapp" target="_blank">CouchApp</a> and the
+			<a href="http://github.com/couchapp/couchapp" target="_blank">Evently</a> framework.
+		</p>
+		
+		<p>
+			Do you want to have your own?
+			<ol>
+				<li>Warm up you couch</li>
+				<li>Clone this</li>
+				<li>Import your music in with an AIR tool</li>
+				<li>Relax</li>
+			</ol>
+		</p>
+		
+		<p>
+			<a href="http://github.com/martinkirch/CloudBox" target="_blank">http://github.com/martinkirch/CloudBox</a>
+		</p>
+	</div>
 
 </body>
 
@@ -49,6 +86,16 @@
 		
 		$("#searchBox").evently("searchBox", app);
 		$.evently.connect("#account","#searchBox",["loggedIn", "loggedOut"]);
+	});
+	
+	$('#aboutLink').click(function(e){
+		$('#about').fadeIn();
+		e.preventDefault();
+	});
+	
+	$('#aboutCloseLink').click(function(e){
+		$('#about').fadeOut();
+		e.preventDefault();
 	});
 </script>
 </html>

@@ -1,11 +1,17 @@
 # Stuff to do for a better Cloudbox
 
-Ordered by priority
 
-* Migrate my old couchapp as a 0.6-compliant one
+## v0.1
+
+* Bring fulltext search back
+* Single-click clone from the "About" panel
+* Create a demo branch, deploy to my hosted couch
+* Spread the word : CouchDB's playing music (on http://couchapp.org/garden/_design/garden/index.html too)
+
+## towards 1.0
+
 * Complete importation program
 	* Importation console (instead of traces)
-	* CouchDB URL in a text input
 	* Select multiple files
 	* Parse all ID3 tags available
 	* With associated image!
@@ -13,3 +19,7 @@ Ordered by priority
 * Install couchapp from the importation program
 * Complete and custom JS-controlled player
 * Field-specific search (search artist, title, album...)
+
+## 2.0
+
+* Playlists, here you come!
