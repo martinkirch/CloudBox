@@ -1,3 +1,4 @@
 {
-  "view" : "songs"
+  "view" : "songs",
+	"include_docs" : "true"
 }

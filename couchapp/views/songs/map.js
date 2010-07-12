@@ -1,8 +1,8 @@
-// TODO: emit null et faire la requete avec with_docs
+// TODO: emit null et faire la requete avec include_docs=true
 function(doc)
 {
 	if (doc.type == "song")
 	{
-		emit(doc._id, doc);
+		emit(doc._id, null);
 	}
 };

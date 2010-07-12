@@ -3,7 +3,7 @@ function(data)
 	var doc;
 	
 	var list = data.rows.map(function(r) {
-			doc = r.value;
+			doc = r.doc;
 			return doc;
 		}); // EPIC MUSTACHE!
 	
