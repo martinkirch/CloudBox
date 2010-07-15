@@ -3,12 +3,11 @@
 
 ## v0.1
 
-* Bring fulltext search back
 * Single-click clone from the "About" panel
 * Create a demo branch, deploy to my hosted couch
 * Spread the word : CouchDB's playing music (on http://couchapp.org/garden/_design/garden/index.html too)
 
-## towards 1.0
+## features for 1.0
 
 * Complete importation program
 	* Importation console (instead of traces)

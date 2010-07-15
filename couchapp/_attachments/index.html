@@ -86,6 +86,7 @@
 		
 		$("#searchBox").evently("searchBox", app);
 		$.evently.connect("#account","#searchBox",["loggedIn", "loggedOut"]);
+		$.evently.connect("#searchBox","#list",["setList"]);
 	});
 	
 	$('#aboutLink').click(function(e){

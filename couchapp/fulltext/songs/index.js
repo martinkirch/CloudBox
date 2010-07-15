@@ -1,4 +1,3 @@
-// http://localhost:5984/bewls/_fti/couchapp/songs?q=artist:beck&include_docs=true&debug=true
 function(doc)
 {
 	if(doc.type == 'song')
