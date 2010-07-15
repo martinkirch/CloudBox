@@ -6,6 +6,7 @@ function(e, query)  // TODO : maybe there's a better way to query couchdb-lucene
 	var app = $$(this).app;
 	var widget = $(this);
 	
+	// TODO : protect "query". lucene is sensitive
 	var reqUrl = app.db.uri + '_fti/' + app.ddoc._id + '/songs?q=' + encodeURIComponent(query) + '&include_docs=true';
 	
 	$.ajax(
