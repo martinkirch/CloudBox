@@ -1,5 +1,8 @@
 function(e, query)  // TODO : maybe there's a better way to query couchdb-lucene... ?
 {
+	if(!query || query == '')
+		return;
+	
 	var app = $$(this).app;
 	var widget = $(this);
 	
@@ -10,14 +13,16 @@ function(e, query)  // TODO : maybe there's a better way to query couchdb-lucene
 		type: "GET",
 		url: reqUrl,
 		complete : function(req)
-		{			
+		{
+			var resp = $.httpData(req, "json");
+			
 			if (req.status >= 400)
 				alert("Error while requesting couchdb-lucene : "+resp.reason);
 			else
 			{
 				var doc;
 				
-				var list = $.httpData(req, "json").rows.map(function(r) {
+				var list = resp.rows.map(function(r) {
 						doc = r.doc;
 						return doc;
 					});
