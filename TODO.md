@@ -18,6 +18,7 @@
 * Install couchapp from the importation program
 * Complete and custom JS-controlled player
 * Field-specific search (search artist, title, album...)
+* Artists and albums listings - filter by name and style
 
 ## 2.0
 
