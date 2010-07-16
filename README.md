@@ -12,4 +12,4 @@ Music on a couch... relaxing ;)
 * Couchapp >=0.6
 * Adobe AIR runtime (+ Adobe's AIR SDK >=1.5 if you want to compile the importation tool)
 
-Normally any HTML5-compliant browser can run the application. Actually it works well on Safari 5, but Firefox 3.6 and 4 can't read the MP3 from Couchdb, Chrome 5 can "sometimes".
+MP3 is not supported by all HTML5 browsers. So far it works well on Safari 5, Firefox 3.6 and 4 can't read MP3s, Chrome 5 can "sometimes".
