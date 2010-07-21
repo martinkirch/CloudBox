@@ -1,4 +1,4 @@
-package // TODO faire en sorte que cete classe ne puisse être utilisée que dans le package
+package
 {
 	import Couch;
 	import CouchEvent;
@@ -86,9 +86,8 @@ package // TODO faire en sorte que cete classe ne puisse être utilisée que dan
 			var f:FileReference = _document._pendingAttachments.pop();
 			f.data.position = 0;
 			
-			// TODO protect name?
 			var subRequest:CouchRequest = new CouchRequest(_couch);
-			subRequest.url = _couch.getDBURL() + _document._id + '/' + f.name + ( _document._rev ? '?rev=' + _document._rev : '');
+			subRequest.url = _couch.getDBURL() + _document._id + '/' + str2url(f.name) + ( _document._rev ? '?rev=' + _document._rev : '');
 			subRequest.method = _request.method;
 			subRequest.data = f.data;
 			subRequest.context = f;
@@ -103,6 +102,43 @@ package // TODO faire en sorte que cete classe ne puisse être utilisée que dan
 			{
 				trace("CouchRequest::completed() - error while sending sub-request to " + subRequest.url + "\n" + e);
 			}
+		}
+		
+		private function str2url(s:String):String
+		{
+			return s.replace(
+				'À', 'A').replace(
+				'Â', 'A').replace(
+				'Ä', 'A').replace(
+				'à', 'a').replace(
+				'â', 'a').replace(
+				'ä', 'a').replace(
+				'ç', 'c').replace(
+				'Ç', 'c').replace(
+				'ô', 'o').replace(
+				'ö', 'o').replace(
+				'Ô', 'O').replace(
+				'Ö', 'O').replace(
+				'é', 'e').replace(
+				'è', 'e').replace(
+				'ê', 'e').replace(
+				'ë', 'e').replace(
+				'É', 'E').replace(
+				'È', 'E').replace(
+				'Ê', 'E').replace(
+				'Ë', 'E').replace(
+				'î', 'i').replace(
+				'ï', 'i').replace(
+				'Î', 'I').replace(
+				'Ï', 'I').replace(
+				'ù', 'u').replace(
+				'ü', 'u').replace(
+				'û', 'u').replace(
+				'Ù', 'U').replace(
+				'Ü', 'U').replace(
+				'Û', 'U').replace(
+				/[^A-Za-z0-9_\s\.\/\\-]/g , '').replace(
+				/[ \s\/\\]+/g , '-');
 		}
 		
 		/*** Handlers ***/
@@ -126,7 +162,7 @@ package // TODO faire en sorte que cete classe ne puisse être utilisée que dan
 					if(!_document._attachments)
 						_document._attachments = new Object();
 					
-					_document._attachments[f.name] = attachment;
+					_document._attachments[str2url(f.name)] = attachment;
 				}
 				
 				applyResponseToDocument(e.data);
