@@ -2,11 +2,13 @@
 	<tr>
 		<th class='artist'>Artist</th>
 		<th class='title'>Title</th>
+		<th class='album'>Album</th>
 	</tr>
 {{#songs}}
 	<tr class="song {{rowClass}}" id="song_{{_id}}">
 		<td class='artist'>{{artist}}</td>
 		<td class='title'>{{title}}</td>
+		<td class='album'>{{album}}</td>
 	</tr>
 {{/songs}}
 </table>
