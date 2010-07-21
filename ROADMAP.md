@@ -10,10 +10,17 @@
 
 ### O.2 : improved importation tool
 
+done:
+
+* nicer URLs
+* add more ID3 tags to our documents
+
+todo:
+
 * Select multiple files (or folders)
-* Parse all ID3 tags available
-* Extract the cover image
-	
+* Display the album title & song cover
+* index more search fields
+
 ### Targeting 1.0
 
 * Artists and albums listings - filter by name and style
@@ -23,6 +30,7 @@
 * Complete and custom JS-controlled player
 * Field-specific search (search artist, title, album...)
 * Test on big library
+* Check if songs (from fulltext-search and views) are sorted correctly
 
 ## 2.0
 

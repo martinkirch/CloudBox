@@ -6,6 +6,8 @@
 	
 	import Couch;
 	import CouchDocument;
+	import FakeFileReference;
+	
 	import com.metaphile.id3.ID3Reader;
 	import com.metaphile.id3.ID3Data;
 	
@@ -53,17 +55,61 @@
 	
 	private function metaDataLoaded(d:ID3Data):void
 	{
+		if(!d.author && !d.title)
+		{
+			console(d.author);
+			console(d.title);
+			console("error: artist and title ID3 tags are not present in "+fileRef.name+" - ignoring file");
+			return;
+		}
+		
 		doc = new CouchDocument(couch, str2url(d.author + '-' + d.title));
+		
 		doc.artist = d.author;
 		doc.title = d.title;
 		doc.attach(fileRef);
 		doc.type = "song";
+		
+		if(d.albumTitle)
+			doc.album = String(d.albumTitle);
+		
+		if(d.genres)
+		{
+			if(String(d.genres).match(/,/))
+				doc.genres = String(d.genres).split(/\s*,\s*/);
+			else
+				doc.genres = String(d.genres);
+		}
+		
+		if(d.publisher)
+			doc.publisher = String(d.publisher);
+		
+		if(d.track)
+			doc.track = String(d.track);
+		
+		if(d.year)
+			doc.year = String(d.year);
+		
+		if(d.albumArt)
+		{
+			var extension:String = d.albumArt.mime;
+			
+			if(extension.match(/jp/i))
+				extension = 'jpg';
+			else if (extension.match(/png/i))
+				extension = 'png';
+			else
+				extension = 'gif';
+			
+			doc.attach(new FakeFileReference(d.albumArt.image, "cover."+extension));
+		}
+				
 		doc.save(fileSent);
 	}
 	
 	private function fileSent(e:CouchEvent):void
 	{
-		console("Sent "+doc.author+' - '+doc.title);
+		console("Sent "+doc.artist+' - '+doc.title);
 	}
 	
 	private function str2url(s:String):String
