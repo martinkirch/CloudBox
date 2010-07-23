@@ -7,13 +7,20 @@ function(e,data)
 	{
 		doc = data[i];
 		
-		if(!doc.url && doc._attachments)
+		if(doc._attachments)
+		{
 			for (var name in doc._attachments)
-				if(name.substring(name.length - 3) == 'mp3')
+			{
+				if(!doc.url && name.substring(name.length - 3) == 'mp3')
 				{
 					doc.url = prefix + encodeURIComponent(doc._id) + '/' + encodeURIComponent(name);
-					break;
 				}
+				else if(!doc.coverUrl && name.substring(0,5) == 'cover')
+				{
+					doc.coverUrl = prefix + encodeURIComponent(doc._id) + '/' + encodeURIComponent(name);
+				}
+			}
+		}
 		
 		$('#song_'+doc._id).data('doc', doc);
 	};

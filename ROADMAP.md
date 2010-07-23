@@ -14,11 +14,11 @@ done:
 
 * nicer URLs
 * add more ID3 tags to our documents
+* Import & display song cover
 
 todo:
 
 * Select multiple files (or folders)
-* Display song cover
 * Index more search fields
 * Resize cover image (if easy with Flex)
 * Check if songs (from fulltext-search and views) are sorted correctly

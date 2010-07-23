@@ -1,6 +1,13 @@
 #player
 {
 	float:right;
+	max-width:33%;
+}
+
+#player img
+{
+	float:left;
+	height:4em;
 }
 
 #player a
