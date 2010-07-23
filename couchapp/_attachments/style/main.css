@@ -116,7 +116,7 @@ li
 	background:#fff url('smallerBackgroundLogo.png') no-repeat fixed right bottom;
 	border: 2px solid #aaa;
 	padding:1em;
-	position:absolute;
+	position:fixed;
 	margin-left:-15em;
 	top:4em;
 	left:50%;
