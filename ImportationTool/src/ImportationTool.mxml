@@ -63,7 +63,7 @@
 			return;
 		}
 		
-		doc = new CouchDocument(couch, str2url(d.author + '-' + d.title));
+		doc = new CouchDocument(couch, str2docID(d.author + '-' + d.title));
 		
 		doc.artist = d.author;
 		doc.title = d.title;
@@ -112,7 +112,7 @@
 		console("Sent "+doc.artist+' - '+doc.title);
 	}
 	
-	private function str2url(s:String):String
+	private function str2docID(s:String):String
 	{
 		return s.replace(
 			'À', 'A').replace(
@@ -146,7 +146,7 @@
 			'Ü', 'U').replace(
 			'Û', 'U').replace(
 			/[^A-Za-z0-9_\s\.\/\\-]/g , '').replace(
-			/[ \s\/\\]+/g , '-');
+			/[ \s\.\/\\]+/g , '-');
 	}
 	
 	]]></mx:Script>

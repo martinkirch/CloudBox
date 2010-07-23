@@ -18,19 +18,20 @@ done:
 todo:
 
 * Select multiple files (or folders)
-* Display the album title & song cover
-* index more search fields
+* Display song cover
+* Index more search fields
+* Resize cover image (if easy with Flex)
+* Check if songs (from fulltext-search and views) are sorted correctly
+* Conflicts protections (double importations, id already taken, etc)
 
 ### Targeting 1.0
 
 * Artists and albums listings - filter by name and style
-* Conflicts protections (double importations, id already taken, etc)
 * Import from iTunes lib, m3u lists ...
 * Install the couchapp from the importation tool
 * Complete and custom JS-controlled player
 * Field-specific search (search artist, title, album...)
 * Test on big library
-* Check if songs (from fulltext-search and views) are sorted correctly
 
 ## 2.0
 
